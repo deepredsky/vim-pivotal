@@ -132,3 +132,7 @@ function! PivotalOpen()
     echohl ErrorMsg | echomsg 'VIM-PIVOTAL: Could not find pivotal story in buffer' | echohl None
   endif
 endfunction
+
+command! -nargs=1 -complete=command Pivotal call PivotalGet(<q-args>)
+command! -nargs=0 -complete=command PivotalOpen call PivotalOpen()
+command! -nargs=0 -complete=command PivotalIteration call PivotalGetCurrentIteration()
