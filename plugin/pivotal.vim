@@ -59,11 +59,26 @@ function! PivotalGet(pivotalid) abort
     silent %d _
 
     call setline(1, split(pivotal.description, "\n"))
+
+    let b:pivotal = {
+          \ "id": pivotal.id,
+          \ "name": pivotal.name,
+          \ "url": pivotal.url,
+          \}
     setlocal bufhidden=hide filetype=markdown noswapfile noswapfile
     setlocal nomodified
   else
     redraw
     echohl ErrorMsg | echomsg 'VIM-PIVOTAL: Pivotal story not found' | echohl None
     return
+  endif
+endfunction
+
+function! PivotalOpen()
+  if exists("b:pivotal['url']")
+    call netrw#BrowseX(b:pivotal['url'], 0)
+    return
+  else
+    echohl ErrorMsg | echomsg 'VIM-PIVOTAL: Could not find pivotal story in buffer' | echohl None
   endif
 endfunction
