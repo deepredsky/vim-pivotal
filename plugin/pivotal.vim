@@ -19,8 +19,8 @@ if !exists('g:pivotal_auth_token')
   finish
 endif
 
-function! s:ApiUrl(pivotalid)
-  let url = 'https://www.pivotaltracker.com/services/v5/projects/' . $PIVOTAL_PROJECT_ID . '/stories/' . a:pivotalid
+function! s:ApiUrl(path)
+  let url = 'https://www.pivotaltracker.com/services/v5/projects/' . $PIVOTAL_PROJECT_ID . a:path
   return url
 endfunction
 
@@ -36,8 +36,7 @@ endfunction
 
 function! PivotalGet(pivotalid) abort
   redraw | echon 'Getting pivotal... '
-  echom s:ApiUrl(a:pivotalid)
-  let res = webapi#http#get(s:ApiUrl(a:pivotalid), '', { "X-TrackerToken": g:pivotal_auth_token })
+  let res = webapi#http#get(s:ApiUrl('/stories/' . a:pivotalid), '', { "X-TrackerToken": g:pivotal_auth_token })
   if res.status =~# '^2'
     try
       let pivotal = webapi#json#decode(res.content)
