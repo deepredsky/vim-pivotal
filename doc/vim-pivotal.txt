@@ -1,0 +1,87 @@
+*pivotal.txt*   Pivotal stories in vim!
+
+Author:  Rajesh Sharma
+Repo:    https://github.com/deepredsky/vim-pivotal
+
+==============================================================================
+CONTENTS                                                       *pivotal-contents*
+
+    1. Installation .....................|PivotalInstallation|
+    2. Configuration ................... |PivotalConfiguration|
+    3. Usage ........................... |PivotalUsage|
+    4. License ......................... |PivotalLicense|
+    5. Bugs ............................ |PivotalBugs|
+    6. Contributing .................... |PivotalContributing|
+
+==============================================================================
+1. Installation                                          *PivotalInstallation*
+
+This plugin requires {webapi-vim}{1} and {fzf.vim}{2}, FZF is used for showing
+current iteration stories in FZF window
+
+Using {vim-plug}{2}:
+>
+    Plug 'deepredsky/vim-pivotal'
+<
+{1}: https://github.com/mattn/webapi-vim
+{2}: https://github.com/junegunn/fzf.vim
+{3}: https://github.com/junegunn/vim-plug
+
+==============================================================================
+2. Configuration                                         *PivotalConfiguration*
+
+You can configure the following settings are required to make this plugin work
+
+Set this to project_id of the project. This can also be configured using
+environment variable with `PIVOTAL_PROJECT_ID` >
+
+    let g:pivotal_project_id = 1234556
+<
+
+Set this to auth token provided by pivotal. Your personal token can be found
+near the bottom of your PivotalTracker profile page
+https://www.pivotaltracker.com/profile >
+
+    let g:pivotal_auth_token = 'xxooxxooxxooxx'
+<
+
+This can also be configured using environment variable with
+`PIVOTAL_AUTH_TOKEN`
+
+==============================================================================
+3. Usage                                                        *PivotalUsage*
+
+Get a pivotal story by ID >
+  :Pivotal 123456
+<
+
+Fuzzy find pivotal stories in current iteration >
+  :PivotalIteration
+<
+
+Go to a story in Pivotal webpage ( in pivotal buffer ) >
+  :PivotalOpen
+<
+
+==============================================================================
+4. License                                                       *PivotalLicense*
+
+This plugin is MIT licensed.
+See https://github.com/deepredsky/vim-pivotal/blob/master/LICENSE
+
+==============================================================================
+5. Bugs                                                             *PivotalBugs*
+
+If you find a bug please post it on the issue tracker:
+http://github.com/deepredsky/vim-pivotal/issues/
+
+==============================================================================
+6. Contributing                                             *PivotalContributing*
+
+Think you can make this plugin better?  Awesome!  Fork it on GitHub and send a
+pull request.
+
+GitHub: http://github.com/deepredsky/vim-pivotal
+
+==============================================================================
+vim:tw=78:sw=2:ts=2:ft=help:norl:nowrap:
